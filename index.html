@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet"> 
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+
+    <title>Corona counter</title>
+  </head>
+  <body style="font-family: 'Open Sans', sans-serif;">
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">Corona Counter</h1>
+      </div>
+    </div>
+
+    <p id="test"></p>
+
+    <div class="container">
+      <div class="col-md-8 mx-auto">
+        <form>
+          <div class="form-group row">
+            <label for="country" class="col-sm-4 col-form-label">Country</label>
+            <div class="col-sm-8">
+              <p type="text" class="form-control" id="country" ></p>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="countryCode" class="col-sm-4 col-form-label"
+              >Country Code</label
+            >
+            <div class="col-sm-8">
+              <p type="text" class="form-control" id="countryCode" ></p>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="date" class="col-sm-4 col-form-label">Date</label>
+            <div class="col-sm-8">
+              <p type="text" class="form-control" id="date" ></p>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="slug" class="col-sm-4 col-form-label">Slug</label>
+            <div class="col-sm-8">
+              <p type="text" class="form-control" id="slug" ></p>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="newConfirmed" class="col-sm-4 col-form-label"
+              >New Confirmed</label
+            >
+            <div class="col-sm-8">
+              <p type="text" class="form-control" id="newConfirmed" ></p>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="totalConfirmed" class="col-sm-4 col-form-label"
+              >Total Confirmed</label
+            >
+            <div class="col-sm-8">
+              <p type="text" class="form-control" id="totalConfirmed" ></p>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="newDeaths" class="col-sm-4 col-form-label"
+              >New Deaths</label
+            >
+            <div class="col-sm-8">
+              <p type="text" class="form-control" id="newDeaths" ></p>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="totalDeaths" class="col-sm-4 col-form-label"
+              >Total Deaths</label
+            >
+            <div class="col-sm-8">
+              <p type="text" class="form-control" id="totalDeaths" ></p>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="newRecovered" class="col-sm-4 col-form-label"
+              >New Recovered</label
+            >
+            <div class="col-sm-8">
+              <p type="text" class="form-control" id="newRecovered" ></p>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="totalRecovered" class="col-sm-4 col-form-label"
+              >Total Recovered</label
+            >
+            <div class="col-sm-8">
+              <p type="text" class="form-control" id="totalRecovered" ></p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <footer class="footer mt-auto py-3">
+      <div class="container">
+        <span class="text-muted">Alok Deka</span>
+      </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+
+
+    <script>
+        fetch('https://api.covid19api.com/summary').then((apidata)=>{
+            // returns JSON data
+            console.log(apidata);
+
+            // return the data in JS object
+            return apidata.json();
+        }).then((actualdata)=>{
+            const mydata = actualdata.Countries[76];
+
+            document.getElementById('country').innerHTML= mydata.Country;
+            document.getElementById('countryCode').innerHTML= mydata.CountryCode;
+            document.getElementById('date').innerHTML= mydata.Date;
+            document.getElementById('slug').innerHTML= mydata.Slug;
+            document.getElementById('newConfirmed').innerHTML= mydata.NewConfirmed;
+            document.getElementById('totalConfirmed').innerHTML= mydata.TotalConfirmed;
+            document.getElementById('newDeaths').innerHTML= mydata.NewDeaths;
+            document.getElementById('totalDeaths').innerHTML= mydata.TotalDeaths;
+            document.getElementById('newRecovered').innerHTML= mydata.NewRecovered;
+            document.getElementById('totalRecovered').innerHTML= mydata.TotalRecovered;
+        }).catch((error)=>{
+            console.log(`The Error : ${error}`);
+        })
+    </script>
+  </body>
+</html>
