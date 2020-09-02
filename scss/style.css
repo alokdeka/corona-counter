@@ -19,17 +19,21 @@ footer {
   color: #fff;
 }
 
-@media only screen and (max-width: 600px) {
-  body {
-    margin: unset;
+#image {
+  -webkit-animation: spin 4s linear infinite;
+  animation: spin 4s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
   }
-  .details {
-    padding: 20px 20px;
-    -webkit-box-shadow: unset;
-    box-shadow: unset;
-  }
-  h1 {
-    font-size: 48px !important;
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -104,5 +108,19 @@ footer {
 
 #myDiv {
   display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    margin: unset;
+  }
+  .details {
+    padding: 20px 20px;
+    -webkit-box-shadow: unset;
+    box-shadow: unset;
+  }
+  h1 {
+    font-size: 48px !important;
+  }
 }
 /*# sourceMappingURL=style.css.map */
